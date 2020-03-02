@@ -15,12 +15,12 @@ export async function main(event, context, callback) {
       createdAt: Date.now()
     }
   };
-  console.log(params);
 
   try {
     await dynamoDbLib.call("put", params);
     return success(params.Item);
   } catch (e) {
+    console.log(e);
     return failure({ status: false });
   }
 }
